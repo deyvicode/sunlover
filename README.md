@@ -1,8 +1,7 @@
-# Getting Started with Create React App
+# e-commerce
+This is a project of the [ReactJS course](https://www.coderhouse.com.pe/online/reactjs) at Coderhouse.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+## Getting Started
 
 In the project directory, you can run:
 
