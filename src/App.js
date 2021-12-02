@@ -1,4 +1,6 @@
-import Header from './Header';
+import './assets/css/main.css' // base styles
+
+import Header from './components/header/Header'
 
 const App = () => {
     return (
