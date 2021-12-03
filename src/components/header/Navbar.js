@@ -1,18 +1,23 @@
-const Navbar = () => {
+const Navbar = ({ menu }) => {
     return (
         <nav className="nav bd-grid">
             <div className="nav__toggle" id="nav-toggle">
                 <i className='bx bx-menu'></i>
             </div>
 
-            <a href="#home" className="nav__logo">SunLover</a>
+            <a href="#home" className="nav__logo"><b>SunLover</b></a>
 
             <div className="nav__menu" id="nav-menu">
                 <ul className="nav__list">
-                    <li className="nav__item"><a href="#home" className="nav__link active">Inicio</a></li>
-                    <li className="nav__item"><a href="#male" className="nav__link">Hombre</a></li>
-                    <li className="nav__item"><a href="#female" className="nav__link">Mujer</a></li>
-                    <li className="nav__item"><a href="#kids" className="nav__link">Niños</a></li>
+                    {
+                        menu.map((element, index) => {
+                            return (
+                                <li className="nav__item" key={index}>
+                                    <a href={element.url} className={index === 0 ? "nav__link active" : "nav__link"}>{element.name}</a>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
 

@@ -5,7 +5,7 @@ import Header from './components/header/Header'
 const App = () => {
     return (
         <>
-            <Header/>
+            <Header />
             <main>soy main</main>
         </>
     );
