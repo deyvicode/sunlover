@@ -1,3 +1,5 @@
+import CartWidget from "./CartWidget"
+
 const Navbar = ({ menu }) => {
     return (
         <nav className="nav bd-grid">
@@ -21,9 +23,7 @@ const Navbar = ({ menu }) => {
                 </ul>
             </div>
 
-            <div className="nav__shop">
-                <i className='bx bx-shopping-bag bx-tada-hover'></i>
-            </div>
+            <CartWidget />
         </nav>
     )
 }

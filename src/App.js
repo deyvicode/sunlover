@@ -1,12 +1,15 @@
 import './assets/css/main.css' // base styles
 
 import Header from './components/header/Header'
+import ItemListContainer from './components/ItemListContainer'
 
 const App = () => {
     return (
         <>
             <Header />
-            <main>soy main</main>
+            <main>
+                <ItemListContainer greeting="greeting message" />
+            </main>
         </>
     );
 }
