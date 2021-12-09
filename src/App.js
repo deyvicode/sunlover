@@ -1,7 +1,7 @@
 import './scss/main.scss' // base styles
 
 import Header from './components/header/Header'
-import ItemListContainer from './components/ItemListContainer'
+import ItemListContainer from './components/product/ItemListContainer'
 
 const App = () => {
     return (

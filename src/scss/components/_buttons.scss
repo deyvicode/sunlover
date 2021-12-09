@@ -1,0 +1,56 @@
+a {
+    text-decoration: none;
+    color: $dark-color;
+}
+
+button {
+    font-family: $body-font;
+}
+
+.button {
+    display: inline-block;
+    background-color: $dark-color;
+    color: $white-color;
+    padding: 1.125rem 2rem;
+    font-weight: $font-medium;
+    border-radius: .5rem;
+    transition: .3s;
+    cursor: pointer;
+    
+    &:hover {
+        transform: translateY(-.25rem);
+    }
+}
+
+.button-icon {
+    font-size: 1.25rem;
+    margin-right: $mb-1;
+    transition: .3s;
+}
+
+.button-light {
+    display: inline-flex;
+    color: $dark-color;
+    font-weight: $font-bold;
+    align-items: center;
+    
+    &:hover .button-icon {
+        transform: translateX(.25rem);
+    }
+}
+
+.button-outline {
+    /* display: inline-block; */
+    background-color: transparent;
+    color: $dark-color;
+    padding: 1.125rem 2rem;
+    font-weight: $font-medium;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .3s;
+    
+    &:hover {
+        background-color: $dark-color;
+        color: $white-color;
+    }
+}
