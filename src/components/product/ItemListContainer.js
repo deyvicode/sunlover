@@ -1,7 +1,9 @@
 import ItemCount from "./ItemCount"
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-const onAdd = () => { // When the product is added to Cart
-    console.log("Product added to cart")
+const onAdd = (count) => { // When the product is added to Cart
+    toast.success(`agrego ${count} producto(s) a su compra`)
 }
 
 const ItemListContainer = () => {
@@ -16,6 +18,7 @@ const ItemListContainer = () => {
     return (
         <section className="product">
             <ItemCount stock={ product.stock } initial={ product.initial } onAdd={ onAdd }  />
+            <ToastContainer theme="dark" position="bottom-right" hideProgressBar closeOnClick pauseOnHover />
         </section>
     )
 }

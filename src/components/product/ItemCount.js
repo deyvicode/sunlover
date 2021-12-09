@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const ItemCount = ({stock, initial, onAdd}) => {
 
@@ -13,6 +14,14 @@ const ItemCount = ({stock, initial, onAdd}) => {
     const subtraction = () => {
         if (count > 1) {
             setCount(count - 1)
+        }
+    }
+
+    const validateStock = () => {
+        if (stock >= count) { // sufficient stock
+            onAdd(count)
+        } else {
+            toast.warning('No tenemos el stock suficiente')
         }
     }
 
@@ -42,7 +51,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                         <button className="button-outline" onClick={ addition }> + </button>
                     </div>
 
-                    <button className="button" onClick={ onAdd }>Agregar</button>
+                    <button className="button" onClick={ validateStock }>Agregar</button>
                 </div>
                 
             </div>
