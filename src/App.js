@@ -1,4 +1,4 @@
-import './assets/css/main.css' // base styles
+import './scss/main.scss' // base styles
 
 import Header from './components/header/Header'
 import ItemListContainer from './components/ItemListContainer'

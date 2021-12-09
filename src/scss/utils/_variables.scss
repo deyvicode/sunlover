@@ -1,0 +1,44 @@
+/* FONT SIZE */
+$big-font-size: 1.25rem;
+$bigger-font-size: 1.5rem;
+$biggest-font-size: 2rem;
+$h2-font-size: 1.25rem;
+$normal-font-size: .938rem;
+$smaller-font-size: .813rem;
+
+$body-font: 'Poppins', sans-serif;
+$header-height: 3rem;
+
+$font-medium: 500;
+$font-semi-bold: 600;
+$font-bold: 700;
+
+/* COLORS */
+
+$dark-color: #141414;
+$dark-color-light: #8A8A8A;
+$dark-color-lighten: #F2F2F2;
+$white-color: #FFFFFF;
+
+/* MARGINS */
+
+$mb-1: .5rem;
+$mb-2: 1rem;
+$mb-3: 1.5rem;
+$mb-4: 2rem;
+$mb-5: 2.5rem;
+$mb-6: 3rem;
+
+/* z-index */
+$z-fixed: 100;
+
+/* Rotate img */
+$rotate-img: rotate(-30deg);
+
+$breakpoints: (
+    small: 0px,
+    medium: 640px,
+    large: 1024px,
+    xlarge: 1200px,
+    xxlarge: 1440px
+)
