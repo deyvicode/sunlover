@@ -7,7 +7,7 @@ const App = () => {
     return (
         <>
             <Header />
-            <main>
+            <main className='l-main'>
                 <ItemListContainer greeting="greeting message" />
             </main>
         </>

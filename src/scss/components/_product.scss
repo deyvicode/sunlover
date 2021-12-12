@@ -1,112 +1,54 @@
-section.product {
-    padding: 40px 0;
-
-    .product__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        .product__details {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            
-            .product__actions {
-                margin-top: 1rem;
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-                
-                .product__counter {
-                    flex: 1;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-                    
-                    button {
-                        font-size: $big-font-size;
-                        padding: 0;
-                        width: 40px;
-                        height: 45px;
-                    }
-                    
-                    .counter__input {
-                        flex: 1;
-                        text-align: center;
-                        margin: auto 1rem;
-                        font-size: $big-font-size;
-                        font-weight: $font-semi-bold;
-                    }
-                }
-            }
-        }
-    }
+.featured__container {
+    row-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-@include breakpoint(medium) {
-    section.product {
-        padding: 150px 0;
-        
-        .product__container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 6rem;
-            align-items: flex-start;
-            
-            .product__details .product__actions {
-                margin-top: 1rem;
-                display: flex;
-                flex-direction: row;
-                gap: 3rem;
-                
-                button {
-                    text-align: center;
-                    height: 3.5rem;
-                    flex: 1;
-                }
-            }
-        }
-    }
+.text-center {
+    text-align: center;
 }
 
-/* gallery */
-
-.product__gallery {
-    flex: 1;
+.sunglass {
+    position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    padding: 2rem;
+    background-color: $dark-color-lighten;
+    border-radius: .5rem;
+    transition: .3s;
     
-    .gallery__list {
-        display: none;
+    .sunglass__sale {
+        position: absolute;
+        left: .5rem;
+        background-color: $dark-color;
+        color: $white-color;
+        padding: .25rem .5rem;
+        border-radius: .25rem;
+        font-size: $h2-font-size;
+        transform: rotate(-90deg);
+        letter-spacing: .1rem;    
     }
-    
-    .gallery__preview {
-        flex: 3;
+    .sunglass__img {
+        width: 220px;
+        margin-top: $mb-2;
         margin-bottom: $mb-3;
-        
-        img {
-            width: 100%;
-            border-radius: 0.5rem;
-        }
+        /* transform: var(--rotate-img); */
+        filter: drop-shadow(0 12px 8px rgba(0, 0, 0, .2));
     }
-
-    @include breakpoint(medium) {
-        .gallery__list {
-            flex: 1;
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-            justify-content: space-between;
-            
-            img {
-                width: 100px;
-                cursor: pointer;
-                border-radius: 0.5rem;
-            }
-        }
+    .sunglass__name, .sunglass__price {
+        font-size: $normal-font-size;
+        letter-spacing: .1rem;
+        font-weight: $font-semi-bold;
+        text-align: center;
+    }       
+    .sunglass__name {
+        margin-bottom: $mb-1;
+    }
+    .sunglass__price {
+        margin-bottom: $mb-4;
+    }
+    
+    &:hover {
+        transform: translateY(-.5rem);
     }
 }

@@ -1,24 +1,35 @@
-import ItemCount from "./ItemCount"
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { useState, useEffect } from 'react'
+import ItemList from './ItemList'
+import productsData from './data'
 
-const onAdd = (count) => { // When the product is added to Cart
-    toast.success(`agrego ${count} producto(s) a su compra`)
+const getProducts = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(productsData)
+        }, 2000) //2s
+    })
 }
 
 const ItemListContainer = () => {
-    
-    const product = {
-        id: 1,
-        name: "Product Name",
-        stock: 10,
-        initial: 1
-    }
 
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getProducts().then(products => {
+            setProducts(products)
+        }).finally(() => {
+            setLoading(false)
+        })
+    })
+    
     return (
-        <section className="product">
-            <ItemCount stock={ product.stock } initial={ product.initial } onAdd={ onAdd }  />
-            <ToastContainer theme="dark" position="bottom-right" hideProgressBar closeOnClick pauseOnHover />
+        <section className="featured section">
+            {
+                loading 
+                ? <div className="text-center"><h2>Cargando...</h2></div> 
+                : <ItemList products={products} />
+            }
         </section>
     )
 }
