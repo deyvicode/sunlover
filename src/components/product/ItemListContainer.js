@@ -21,7 +21,7 @@ const ItemListContainer = () => {
         }).finally(() => {
             setLoading(false)
         })
-    })
+    }, [])
     
     return (
         <section className="featured section">
