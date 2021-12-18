@@ -45,11 +45,11 @@
 }
 
 /* Active link */
-.active {
+.nav__link.active {
     position: relative;
 }
 
-.active::before {
+.nav__link.active::before {
     content: '';
     position: absolute;
     bottom: -.5rem;

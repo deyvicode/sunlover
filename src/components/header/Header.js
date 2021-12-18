@@ -4,20 +4,20 @@ const Header = () => {
     
     const navbarLinks = [
         {
-            name: 'Inicio',
-            url: '#home'
-        },
-        {
             name: 'Hombre',
-            url: '#male'
+            url: '/categoria/hombre'
         },
         {
             name: 'Mujer',
-            url: '#female'
+            url: '/categoria/mujer'
         },
         {
             name: 'Niños',
-            url: '#kids'
+            url: '/categoria/ninos'
+        },
+        {
+            name: 'Soporte',
+            url: '/soporte'
         }
     ]
 

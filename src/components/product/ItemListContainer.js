@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import ItemList from './ItemList'
 import productsData from './data'
 
+import { useParams } from 'react-router-dom'
+
 const getProducts = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -14,6 +16,9 @@ const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+
+    const res = useParams()
+    console.log(res)
 
     useEffect(() => {
         getProducts().then(products => {

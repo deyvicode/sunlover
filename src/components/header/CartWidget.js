@@ -1,11 +1,11 @@
-const foo = () => {
-    console.log('Cart clicked');
-}
+import { NavLink } from "react-router-dom"
 
 const CartWidget = () => {
     return (
-        <div className="nav__shop" onClick={foo}>
-            <i className='bx bx-shopping-bag bx-tada-hover'></i>
+        <div className="nav__shop">
+            <NavLink to="/carrito">
+                <i className='bx bx-shopping-bag bx-tada-hover'></i>
+            </NavLink>
         </div>
     )
 }
