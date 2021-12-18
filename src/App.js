@@ -12,11 +12,8 @@ const App = () => {
             <main className='l-main'>
                 <Routes>
                     <Route path='/' element={<ItemListContainer />} />
-                    <Route path='/carrito' element={<ItemListContainer />} />
-                    <Route path='/soporte' element={<ItemListContainer />} />
-                    
-                    <Route path='/categoria/:nombre' element={<ItemListContainer />} />
-                    <Route path='/producto/:id' element={<ItemDetailContainer />} />
+                    <Route path='/category/:category' element={<ItemListContainer />} />
+                    <Route path='/product/:id' element={<ItemDetailContainer />} />
                 </Routes>
             </main>
         </BrowserRouter>

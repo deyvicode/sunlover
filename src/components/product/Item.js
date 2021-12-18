@@ -9,7 +9,7 @@ const Item = ({product}) => {
             <img src={product.image} alt="imagen de producto" className="sunglass__img" />
             <span className="sunglass__name">{ product.name }</span>
             <span className="sunglass__price">${ product.price.toFixed(2) }</span>
-            <NavLink to={ `/producto/${product.id}` } className="button-light">Comprar <i className='bx bx-right-arrow-alt button-icon'></i></NavLink>
+            <NavLink to={ `/product/${product.id}` } className="button-light">Comprar <i className='bx bx-right-arrow-alt button-icon'></i></NavLink>
         </article>
     )
 }

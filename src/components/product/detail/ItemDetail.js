@@ -32,7 +32,7 @@ const ItemDetail = ({product, initial, onAdd}) => {
                     <div className="gallery__list">
                         {
                             product.gallery.map((image, index) => (
-                                <img src={image} alt="imagen de producto" className="product__img" />
+                                <img key={index} src={image} alt="imagen de producto" className="product__img" />
                             ))
                         }
                     </div>

@@ -5,19 +5,19 @@ const Header = () => {
     const navbarLinks = [
         {
             name: 'Hombre',
-            url: '/categoria/hombre'
+            url: '/category/male'
         },
         {
             name: 'Mujer',
-            url: '/categoria/mujer'
+            url: '/category/female'
         },
         {
             name: 'Niños',
-            url: '/categoria/ninos'
+            url: '/category/kids'
         },
         {
             name: 'Soporte',
-            url: '/soporte'
+            url: '/support'
         }
     ]
 

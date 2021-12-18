@@ -1,32 +1,33 @@
 import { useState, useEffect } from 'react'
 import ItemList from './ItemList'
-import productsData from './data'
+//import productsData from './data'
+import { getProducts, getProductsByCategory } from '../../services/ProductService'
 
 import { useParams } from 'react-router-dom'
 
-const getProducts = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(productsData)
-        }, 2000) //2s
-    })
-}
 
 const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const res = useParams()
-    console.log(res)
+    const { category } = useParams()
 
     useEffect(() => {
-        getProducts().then(products => {
-            setProducts(products)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }, [])
+
+        setLoading(true)
+
+        if (category === undefined) {
+            getProducts().then(products => {
+                setProducts(products)
+            }).finally(() => setLoading(false))
+        } else {
+            getProductsByCategory(category).then(products => {
+                setProducts(products)
+            }).finally(() => setLoading(false))
+        }
+
+    }, [category])
     
     return (
         <section className="featured section">
