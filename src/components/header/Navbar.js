@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 
 import { useState } from "react"
 
-const Navbar = ({ menu }) => {
+const Navbar = ({ menuLinks }) => {
     
     const [classMenu, setClassMenu] = useState("nav__menu")
 
@@ -23,7 +23,7 @@ const Navbar = ({ menu }) => {
             <div className={classMenu}>
                 <ul className="nav__list">
                     {
-                        menu.map((element, index) => {
+                        menuLinks.map((element, index) => {
                             return (
                                 <li className="nav__item" key={index}>
                                     <NavLink to={element.url} className="nav__link">{element.name}</NavLink>

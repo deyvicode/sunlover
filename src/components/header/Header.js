@@ -1,7 +1,7 @@
 import Navbar from './Navbar'
 import { useState, useEffect } from 'react'
 
-const Header = () => {
+const Header = ({ menuLinks }) => {
 
     const [classHeader, setClassHeader] = useState("l-header")
     
@@ -16,28 +16,9 @@ const Header = () => {
         return () => window.removeEventListener('scroll', controlScroll)
     },[])
 
-    const navbarLinks = [
-        {
-            name: 'Hombre',
-            url: '/category/male'
-        },
-        {
-            name: 'Mujer',
-            url: '/category/female'
-        },
-        {
-            name: 'Niños',
-            url: '/category/kids'
-        },
-        {
-            name: 'Soporte',
-            url: '/support'
-        }
-    ]
-
     return (
         <header className={classHeader}>
-            <Navbar menu={navbarLinks} />
+            <Navbar menuLinks={menuLinks} />
         </header>
     )
 }
