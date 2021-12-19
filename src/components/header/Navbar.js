@@ -1,17 +1,26 @@
 import CartWidget from "./CartWidget"
 import { NavLink } from "react-router-dom"
 
+import { useState } from "react"
 
 const Navbar = ({ menu }) => {
+    
+    const [classMenu, setClassMenu] = useState("nav__menu")
+
+    const toggleMenu = () => {
+        const newClass = classMenu === "nav__menu" ? "nav__menu show" : "nav__menu"
+        setClassMenu(newClass)
+    }
+    
     return (
         <nav className="nav bd-grid">
-            <div className="nav__toggle" id="nav-toggle">
+            <div className="nav__toggle" onClick={toggleMenu}>
                 <i className='bx bx-menu'></i>
             </div>
 
             <NavLink to="/" className="nav__logo"><b>SunLover</b></NavLink>
 
-            <div className="nav__menu" id="nav-menu">
+            <div className={classMenu}>
                 <ul className="nav__list">
                     {
                         menu.map((element, index) => {
