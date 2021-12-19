@@ -1,7 +1,7 @@
 # SunLover
 SunLover is a trendy sunglasses store, this is a e-commerce project of the [ReactJS course](https://www.coderhouse.com.pe/online/reactjs) at Coderhouse.
 
-![image cover](/public/cover.webp)
+![image cover](/demo.gif)
 
 ## Getting Started
 
