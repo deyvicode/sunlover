@@ -10,7 +10,7 @@ const getProducts = async () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(products)
-        }, 2000) // 2s
+        }, 1000) // 1s
     })
 }
 
@@ -21,7 +21,7 @@ const getProduct = async (id) => {
         setTimeout(() => {
             const product = products.find(product => product.id === parseInt(id))
             resolve(product)
-        }, 2000) // 2s
+        }, 1000) // 1s
     })
 }
 
@@ -32,7 +32,7 @@ const getProductsByCategory = async (category) => {
         setTimeout(() => {
             const productsByCategory = products.filter(product => product.category === category)
             resolve(productsByCategory)
-        }, 2000) // 2s
+        }, 1000) // 1s
     })
 }
 
