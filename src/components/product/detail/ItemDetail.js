@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
+import ItemDetailGallery from './ItemDetailGallery'
+
 const ItemDetail = ({product, initial, onAdd}) => {
 
     const [count, setCount] = useState(initial);
@@ -28,18 +30,9 @@ const ItemDetail = ({product, initial, onAdd}) => {
     return (
         <section className="product">
             <div className="product__container bd-grid">
-                <div className="product__gallery">
-                    <div className="gallery__list">
-                        {
-                            product.gallery.map((image, index) => (
-                                <img key={index} src={image} alt="imagen de producto" className="product__img" />
-                            ))
-                        }
-                    </div>
-                    <div className="gallery__preview">
-                        <img src={product.gallery[0]} alt="imagen de producto" className="product__img" />
-                    </div>
-                </div>
+                
+                <ItemDetailGallery images={product.gallery} />
+
                 <div className="product__details">
                     <h2 className="product__name">{ product.name }</h2>
                     <p className="product__description">{ product.description }</p>
