@@ -15,17 +15,17 @@ const ItemDetailContainer = () => {
     const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
 
-    const { id } = useParams()
+    const { idProduct } = useParams()
 
     useEffect(() => {
         setLoading(true)
 
-        getProduct(id).then(product => {
+        getProduct(idProduct).then(product => { // delay 2s
             setProduct(product)
         }).finally(() => {
             setLoading(false)
         })
-    }, [id])
+    }, [idProduct])
 
     return (
         <div>
