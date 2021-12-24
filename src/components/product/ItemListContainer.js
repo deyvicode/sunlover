@@ -17,11 +17,11 @@ const ItemListContainer = () => {
         setLoading(true)
 
         if (idCategory === undefined) {
-            getProducts().then(products => { // delay 1s
+            getProducts().then(products => { // delay 0.5s
                 setProducts(products)
             }).finally(() => setLoading(false))
         } else {
-            getProductsByCategory(idCategory).then(products => { // delay 1s
+            getProductsByCategory(idCategory).then(products => { // delay 0.5s
                 setProducts(products)
             }).finally(() => setLoading(false))
         }

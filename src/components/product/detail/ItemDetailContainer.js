@@ -3,12 +3,8 @@ import { getProduct } from "../../../services/ProductService"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
-const onAdd = (count, productName) => { // When the product is added to Cart
-    toast.success(`agrego ${count} ${productName}`)
-}
 
 const ItemDetailContainer = () => {
     
@@ -20,7 +16,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         setLoading(true)
 
-        getProduct(idProduct).then(product => { // delay 1s
+        getProduct(idProduct).then(product => { // delay 0.5s
             setProduct(product)
         }).finally(() => {
             setLoading(false)
@@ -35,7 +31,7 @@ const ItemDetailContainer = () => {
                 ? <div className="text-center mt-6"><h2>Cargando...</h2></div>
                 : (product === undefined) 
                 ? <div className="text-center mt-6"><h2>Producto no encontrado</h2></div> 
-                : <ItemDetail product={ product } initial={ 1 } onAdd={ onAdd } />
+                : <ItemDetail product={ product } initial={ 1 } />
             }
 
             <ToastContainer theme="dark" position="bottom-right" hideProgressBar closeOnClick pauseOnHover />

@@ -1,6 +1,6 @@
 const getProductsData = async () => {
     const response = await fetch('/data/products.json')
-    //const response = await fetch('https://52c28e64-a429-49d3-8f14-aa876c0cc559.mock.pstmn.io/products')
+    //const response = await fetch('https://mocki.io/v1/5f773065-b2e9-4514-96b3-e4a69d0083cc')
     return await response.json()
 }
 
@@ -10,7 +10,7 @@ const getProducts = async () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(products)
-        }, 1000) // 1s
+        }, 500) // 0.5s
     })
 }
 
@@ -21,7 +21,7 @@ const getProduct = async (id) => {
         setTimeout(() => {
             const product = products.find(product => product.id === parseInt(id))
             resolve(product)
-        }, 1000) // 1s
+        }, 500) // 0.5s
     })
 }
 
@@ -32,7 +32,7 @@ const getProductsByCategory = async (category) => {
         setTimeout(() => {
             const productsByCategory = products.filter(product => product.category === category)
             resolve(productsByCategory)
-        }, 1000) // 1s
+        }, 500) // 0.5s
     })
 }
 
