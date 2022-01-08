@@ -7,6 +7,7 @@ import Footer from './components/footer/Footer'
 import Cart from './components/cart/Cart'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CartProvider from './components/cart/CartContext'
 
 const menuLinks = [
     {
@@ -29,18 +30,20 @@ const menuLinks = [
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Header menuLinks={menuLinks} />
-            <main className='l-main'>
-                <Routes>
-                    <Route path='/' element={<ItemListContainer />} />
-                    <Route path='/category/:idCategory' element={<ItemListContainer />} />
-                    <Route path='/product/:idProduct' element={<ItemDetailContainer />} />
-                    <Route path='/cart' element={<Cart />} />
-                </Routes>
-            </main>
-            <Footer menuLinks={menuLinks} />
-        </BrowserRouter>
+        <CartProvider>
+            <BrowserRouter>
+                <Header menuLinks={menuLinks} />
+                <main className='l-main'>
+                    <Routes>
+                        <Route path='/' element={<ItemListContainer />} />
+                        <Route path='/category/:idCategory' element={<ItemListContainer />} />
+                        <Route path='/product/:idProduct' element={<ItemDetailContainer />} />
+                        <Route path='/cart' element={<Cart />} />
+                    </Routes>
+                </main>
+                <Footer menuLinks={menuLinks} />
+            </BrowserRouter>
+        </CartProvider>
     );
 }
 

@@ -1,0 +1,36 @@
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+
+    table.table-orders {
+        width: 100%;
+        thead tr th {
+            text-align: left;
+            &:nth-child(1) {
+                width: 100px;
+                padding: 10px 15px;
+            }
+        }
+    
+        tbody tr td img {
+            width: 90%;
+        }
+        
+        tfoot {
+            
+            &:before {
+                position: absolute;
+                content: "";
+                height: 2px;
+                background-color: $dark-color;
+                width: 65%;
+                margin-top: 30px;
+            }
+
+            tr td {
+                font-weight: $font-bold;
+                padding-top: 40px;
+            }
+        } 
+    }
+}

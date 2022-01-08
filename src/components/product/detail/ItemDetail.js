@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom'
 
 import ItemCount from './ItemCount'
 import ItemDetailGallery from './ItemDetailGallery'
+import { useCartContext } from '../../cart/CartContext'
 
 const ItemDetail = ({product, initial}) => {
 
-    const [countSelected, setCountSelected] = useState(initial)
-    const [showCount, setShowCount] = useState(true)
+    const [isShowCount, setIsShowCount] = useState(true)
+    const { addItem } = useCartContext()
 
     const onAdd = (count) => {
-        setCountSelected(countSelected)
-        setShowCount(false)
+        setIsShowCount(false)
+        addItem(product, count)
 
         toast.success(`agrego ${count} ${product.name}`)
     }
@@ -29,7 +30,7 @@ const ItemDetail = ({product, initial}) => {
                     <p><b>Disponible:</b> { product.stock }</p>
                     
                     {
-                        showCount 
+                        isShowCount 
                         ? <ItemCount stock={ product.stock } initial={ initial } onAdd={ onAdd } />                    
                         : <div className="product__actions">
                             <Link to="/cart">
