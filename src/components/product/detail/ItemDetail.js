@@ -34,10 +34,10 @@ const ItemDetail = ({product, initial}) => {
                         ? <ItemCount stock={ product.stock } initial={ initial } onAdd={ onAdd } />                    
                         : <div className="product__actions">
                             <Link to="/cart">
-                                <button className="button-outline">Finalizar Compra</button>
+                                <button className="button-outline">Terminar mi compra</button>
                             </Link>
                             <Link to="/">
-                                <button className="button">Seguir Comprando </button>
+                                <button className="button">Seguir comprando </button>
                             </Link>
                         </div>
                     }

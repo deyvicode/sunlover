@@ -7,30 +7,30 @@
         thead tr th {
             text-align: left;
             &:nth-child(1) {
-                width: 100px;
+                width: 5rem;
                 padding: 10px 15px;
             }
+
+            border-bottom: 1px solid $dark-color-lighten;
         }
     
-        tbody tr td img {
-            width: 90%;
-        }
+        tbody tr td {
+            img {
+                width: 80px;
+            }
+        } 
         
         tfoot {
+            tr {
+                td {
+                    //border-top: 1px solid $dark-color-lighten;
+                    font-size: $normal-font-size;
+                    font-weight: $font-bold;
+                    padding-top: 24px;
+                    color: $dark-color;
+                }
+            } 
             
-            &:before {
-                position: absolute;
-                content: "";
-                height: 2px;
-                background-color: $dark-color;
-                width: 65%;
-                margin-top: 30px;
-            }
-
-            tr td {
-                font-weight: $font-bold;
-                padding-top: 40px;
-            }
         } 
     }
 }

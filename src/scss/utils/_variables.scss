@@ -20,6 +20,10 @@ $dark-color-light: #8A8A8A;
 $dark-color-lighten: #F2F2F2;
 $white-color: #FFFFFF;
 
+.dark-color-light {
+    color: $dark-color-light;
+}
+
 /* MARGINS */
 
 $mb-1: .5rem;

@@ -27,9 +27,9 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     return (
         <div className="product__actions">
             <div className="product__counter">
-                <button className="button-outline" onClick={ subtraction }> - </button>
+                <button className="btn-icon" onClick={ subtraction }> - </button>
                 <span className="counter__input">{ count }</span>
-                <button className="button-outline" onClick={ addition }> + </button>
+                <button className="btn-icon" onClick={ addition }> + </button>
             </div>
 
             <button className="button" onClick={ validateStock }>Agregar</button>
