@@ -4,7 +4,6 @@ import { getProducts, getProductsByCategory } from '../../services/ProductServic
 
 import { useParams } from 'react-router-dom'
 
-
 const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
