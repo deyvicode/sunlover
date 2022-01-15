@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         setLoading(true)
 
-        getProduct(idProduct).then(product => { // delay 0.5s
+        getProduct(idProduct).then(product => {
             setProduct(product)
         }).finally(() => {
             setLoading(false)

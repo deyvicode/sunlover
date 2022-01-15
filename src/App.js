@@ -21,11 +21,11 @@ const menuLinks = [
     {
         name: 'Niños',
         url: '/category/kids'
-    },
+    }/* ,
     {
         name: 'Soporte',
         url: '/support'
-    }
+    } */
 ]
 
 const App = () => {

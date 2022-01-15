@@ -4,7 +4,7 @@ const Item = ({product}) => {
     return (
         <article className="sunglass">
             {
-                product.discount ? <div className="sunglass__sale"> {product.discount} </div> : null
+                product.discount ? <div className="sunglass__sale"> -{product.discount}% </div> : null
             }
             <img src={product.image} alt="imagen de producto" className="sunglass__img" />
             <span className="sunglass__name">{ product.name }</span>
