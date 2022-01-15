@@ -1,6 +1,6 @@
 import { useCartContext } from './CartContext'
 
-const OrdersTable = ({ orders }) => {
+const ItemsTable = ({ items }) => {
 
     const { removeItem } = useCartContext()
 
@@ -17,7 +17,7 @@ const OrdersTable = ({ orders }) => {
                 </thead>
                 <tbody>
                     {
-                        orders.map(order => (
+                        items.map(order => (
                             <tr key={ order.id }>
                                 <td>
                                     <img src={ order.image } alt={ order.name } />
@@ -37,7 +37,7 @@ const OrdersTable = ({ orders }) => {
                 <tfoot>
                     <tr>
                         <td colSpan="3">Total por pagar : </td>
-                        <td> $ { orders.reduce((total, order) => total + order.price * order.quantity, 0).toFixed(2) }</td>
+                        <td> $ { items.reduce((total, order) => total + order.price * order.quantity, 0).toFixed(2) }</td>
                     </tr>
                 </tfoot>
 
@@ -46,4 +46,4 @@ const OrdersTable = ({ orders }) => {
     )
 }
 
-export default OrdersTable
+export default ItemsTable

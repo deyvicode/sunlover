@@ -9,19 +9,19 @@ export const useCartContext = () => {
 
 const CartProvider = ({ children }) => {
     const [totalQuantity, setTotalQuantity] = useState(0)
-    const [orders, setOrders] = useState([])
+    const [items, setItems] = useState([])
 
     const addItem = (product, quantity) => {
         const exist = isInCart(product.id)
         
         if (exist) {
-            const order = findOrder(product.id)
-            order.quantity += quantity
+            const item = findItem(product.id)
+            item.quantity += quantity
         } else {
-            const newOrders = [...orders]
-            newOrders.push({...product, quantity})
+            const newItems = [...items]
+            newItems.push({...product, quantity})
 
-            setOrders(newOrders)
+            setItems(newItems)
         }
 
         setTotalQuantity(totalQuantity + quantity)
@@ -29,33 +29,32 @@ const CartProvider = ({ children }) => {
 
     const removeItem = (idProduct) => {
         // reduce quantity
-        const order = findOrder(idProduct)
-        setTotalQuantity(totalQuantity - order.quantity)
-        // remove order from orders
-        const newOrders = orders.filter(order => order.id !== idProduct)
-        setOrders(newOrders)
+        const item = findItem(idProduct)
+        setTotalQuantity(totalQuantity - item.quantity)
+        // remove item from items
+        const newItems = items.filter(item => item.id !== idProduct)
+        setItems(newItems)
     }
 
-    // esto no tiene mucho sentido real, pero lo puso para el desafio
-    const clear = () => {
+    const clearCart = () => {
         setTotalQuantity(0)
-        setOrders([])
+        setItems([])
     }
 
-    const findOrder = id => orders.find(order => order.id === id)
+    const findItem = id => items.find(item => item.id === id)
 
     const isInCart = (idProduct) => {
-        const order = findOrder(idProduct)
-        return order ? true : false
+        const item = findItem(idProduct)
+        return item ? true : false
     }
 
     return (
         <Provider value={{
             totalQuantity,
-            orders,
+            items,
             addItem,
             removeItem,
-            clear
+            clearCart
         }}>
             { children }
         </Provider>
