@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { storeOrder } from '../../services/OrderService'
 import { useCartContext } from './CartContext'
+import { useNavigate } from 'react-router-dom'
 
 const FormCheckout = ({ items }) => {
 
+    const navigate = useNavigate()
     const { clearCart } = useCartContext()
     const [sending, setSending] = useState(false)
     const [buyer, setBuyer] = useState({
@@ -21,11 +23,11 @@ const FormCheckout = ({ items }) => {
         event.preventDefault()
         setSending(true)
 
-        const id = await storeOrder(buyer, items)
+        const idOrder = await storeOrder(buyer, items)
         setSending(false)
         
-        if (id) {
-            console.log(id);
+        if (idOrder) {
+            console.log(idOrder);
             setBuyer({
                 name: '',
                 email: '',
@@ -33,6 +35,7 @@ const FormCheckout = ({ items }) => {
             })
 
             clearCart()
+            navigate('/order/'+idOrder)
         }
     }
 

@@ -32,7 +32,7 @@ const ItemListContainer = () => {
             {
                 loading 
                 ? <div className="text-center"><h2>Cargando...</h2></div> 
-                : <ItemList products={products} />
+                : <ItemList products={ products.filter(product => product.stock > 0) } />
             }
         </section>
     )

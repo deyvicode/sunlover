@@ -1,5 +1,6 @@
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase'
+import { addDoc, collection, doc, getDoc, serverTimestamp } from 'firebase/firestore'
+import { decreaseStock } from './ProductService'
 
 const storeOrder = async (buyer, items) => {
     
@@ -17,17 +18,31 @@ const storeOrder = async (buyer, items) => {
             quantity: item.quantity
         }
     })
-    
-    const OrdersCollection = collection(db, 'orders')
-    const response = await addDoc(OrdersCollection, {
+
+    const ordersCollection = collection(db, 'orders')
+    const response = await addDoc(ordersCollection, {
         date: serverTimestamp(),
         total,
         buyer,
-        items: itemsValidated  
+        items: itemsValidated
     })
 
-    console.log(response);
+    itemsValidated.forEach(element => {
+        decreaseStock(element.id, element.quantity)
+    })
+
     return response.id
 }
 
-export { storeOrder }
+const getOrder = async (id) => {
+    const ordersCollection = collection(db, 'orders')
+    const refDoc = doc(ordersCollection, id)
+
+    const response = await getDoc(refDoc)
+    const data = response.data()
+    data.id = response.id.trim()
+    
+    return data
+}
+
+export { storeOrder, getOrder }

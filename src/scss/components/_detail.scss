@@ -41,6 +41,16 @@ section.product {
                     }
                 }
             }
+
+            .product__post-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                a button {
+                    width: 100%;
+                }
+            }
         }
     }
 }
@@ -56,18 +66,27 @@ section.product {
             gap: 6rem;
             align-items: flex-start;
             
-            .product__details .product__actions {
-                margin-top: 1rem;
-                display: flex;
-                flex-direction: row;
-                gap: 3rem;
-                
-                button {
-                    text-align: center;
-                    height: 3.5rem;
-                    flex: 1;
+            .product__details {
+                .product__actions {
+                    margin-top: 1rem;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 3rem;
+                    
+                    button {
+                        text-align: center;
+                        height: 3.5rem;
+                        flex: 1;
+                        width: 40px;
+                    }
                 }
-            }
+
+                .product__post-links {
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+
+            } 
         }
     }
 }
@@ -122,4 +141,11 @@ section.product {
 
 .mt-6 {
     margin-top: 6rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+.mb-2 {
+    margin-bottom: 2rem;
 }

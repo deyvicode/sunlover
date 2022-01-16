@@ -28,18 +28,21 @@ const ItemDetail = ({product, initial}) => {
                     <h2 className="product__name">{ product.name }</h2>
                     <p className="product__description">{ product.description }</p>
                     <p><b>Disponible:</b> { product.stock }</p>
+                    <p><b>Precio:</b> ${ product.price.toFixed(2) }</p>
                     
                     {
                         isShowCount 
                         ? <ItemCount stock={ product.stock } initial={ initial } onAdd={ onAdd } />                    
-                        : <div className="product__actions">
-                            <Link to="/cart">
-                                <button className="button-outline">Terminar mi compra</button>
-                            </Link>
-                            <Link to="/">
-                                <button className="button">Seguir comprando </button>
-                            </Link>
-                        </div>
+                        : (
+                            <div className="product__post-links">
+                                <Link to="/cart">
+                                    <button className="button-outline">Terminar mi compra</button>
+                                </Link>
+                                <Link to="/">
+                                    <button className="button">Seguir comprando </button>
+                                </Link>
+                            </div>
+                        )
                     }
                 </div>
             </div>

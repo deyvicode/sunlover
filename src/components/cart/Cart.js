@@ -13,9 +13,9 @@ const Cart = () => {
         <div className="section bd-grid">
             <h2>Va a comprar: </h2><br/>
             <div className="cart-payment">
-                <ItemsTable items={ items } />
+                <ItemsTable items={ items } withRemoveItem={true} />
                 <div className='cart__buyer-form'>
-                    <FormCheckout items={ items } /> 
+                    <FormCheckout items={ items }  /> 
                 </div>
             </div>
         </div>

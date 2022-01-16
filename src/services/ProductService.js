@@ -1,5 +1,5 @@
 import { db } from '../firebase'
-import { getDocs, query, where, collection, doc, getDoc } from 'firebase/firestore'
+import { getDocs, query, where, collection, doc, getDoc, updateDoc, increment } from 'firebase/firestore'
 
 const getProductsData = async (productsQuery) => {
     const response = await getDocs(productsQuery)
@@ -40,4 +40,12 @@ const getProductsByCategory = async (category) => {
     return getProductsData(queryProductsByCategory)
 }
 
-export { getProducts, getProduct, getProductsByCategory }
+const decreaseStock = async (id, quantity) => {
+    const productsCollection = collection(db, 'products')
+    const refDoc = doc(productsCollection, id)
+
+    const response = await updateDoc(refDoc, 'stock', increment(-quantity))
+    console.log(`decrease ${id} - ${quantity}`, response)
+}
+
+export { getProducts, getProduct, getProductsByCategory, decreaseStock }

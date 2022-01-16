@@ -1,13 +1,14 @@
 import './scss/main.scss' // base styles
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CartProvider from './components/cart/CartContext'
+
 import Header from './components/header/Header'
 import ItemListContainer from './components/product/ItemListContainer'
 import ItemDetailContainer from './components/product/detail/ItemDetailContainer'
 import Footer from './components/footer/Footer'
 import Cart from './components/cart/Cart'
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import CartProvider from './components/cart/CartContext'
+import OrderContaner from './components/order/OrderContainer'
 
 const menuLinks = [
     {
@@ -21,7 +22,12 @@ const menuLinks = [
     {
         name: 'Niños',
         url: '/category/kids'
-    }/* ,
+    },
+    {
+        name: 'Verificar Compra',
+        url: '/order'
+    }
+    /* ,
     {
         name: 'Soporte',
         url: '/support'
@@ -39,6 +45,8 @@ const App = () => {
                         <Route path='/category/:idCategory' element={<ItemListContainer />} />
                         <Route path='/product/:idProduct' element={<ItemDetailContainer />} />
                         <Route path='/cart' element={<Cart />} />
+                        <Route path='/order' element={<OrderContaner />} />
+                        <Route path='/order/:idOrder' element={<OrderContaner />} />
                     </Routes>
                 </main>
                 <Footer menuLinks={menuLinks} />

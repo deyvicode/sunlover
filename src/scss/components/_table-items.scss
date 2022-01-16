@@ -5,19 +5,29 @@
     table.table-orders {
         width: 100%;
         thead tr th {
-            text-align: left;
-            &:nth-child(1) {
-                width: 5rem;
-                padding: 10px 15px;
-            }
-
+            text-align: center;
             border-bottom: 1px solid $dark-color-lighten;
+            &:nth-child(1) {
+                text-align: left;
+            }
         }
     
         tbody tr td {
-            img {
-                width: 80px;
+            text-align: center;
+
+            &:nth-child(1) {
+                text-align: left;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+
+                img {
+                    width: 50px;
+                    margin-right: 5px;
+                }
             }
+
         } 
         
         tfoot {
@@ -33,4 +43,8 @@
             
         } 
     }
+}
+
+.d-flex {
+    display: flex;
 }
