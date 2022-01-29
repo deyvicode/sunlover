@@ -1,0 +1,69 @@
+.hero {
+    background-color: $dark-color-lighten;
+    overflow: hidden;
+    padding-bottom: 2rem;
+    
+    .hero__container {
+        height: 70vh;
+        
+        .hero__sunglass {
+            display: flex;
+            
+            .hero__shape {
+                height: 250px;
+            }
+            
+            .hero__img {
+                top: 0;
+                max-width: initial;
+                width: 320px;
+            }
+        }
+
+        .hero__data {
+            .hero__new {
+                display: block;
+                font-size: $smaller-font-size;
+                font-weight: $font-semi-bold;
+                margin-bottom: $mb-2;
+            }
+            
+            .hero__title {
+                font-size: $bigger-font-size;
+                margin-bottom: $mb-1;
+            }
+            
+            .hero__description {
+                margin-bottom: $mb-6;
+            }
+        }
+    }
+}
+
+@include breakpoint(768px) {
+    .hero {
+        padding-bottom: 0;
+        
+        .hero__container {
+            grid-template-columns: max-content max-content;
+            justify-content: center;
+            align-items: center;
+            
+            .hero__sunglass {
+                order: 1;
+                
+                .hero__shape {
+                    width: 376px;
+                    height: 376px;
+                }
+    
+                .hero__img {
+                    width: 400px;
+                    top: 1rem;
+                    right: 0;
+                    left: -3rem;
+                }
+            }
+        }
+    }
+}

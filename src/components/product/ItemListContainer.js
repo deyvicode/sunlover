@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import ItemList from './ItemList'
+import { useParams } from 'react-router-dom'
 import { getProducts, getProductsByCategory } from '../../services/ProductService'
 
-import { useParams } from 'react-router-dom'
+import ItemList from './ItemList'
+import Hero from '../header/Hero'
 
 const ItemListContainer = () => {
 
@@ -28,13 +29,21 @@ const ItemListContainer = () => {
     }, [idCategory])
     
     return (
-        <section className="featured section">
+        <>
             {
-                loading 
-                ? <div className="text-center"><h2>Cargando...</h2></div> 
-                : <ItemList products={ products.filter(product => product.stock > 0) } />
+                idCategory === undefined 
+                ? <Hero />
+                : ''
             }
-        </section>
+            
+            <section className="featured section" id='products-container'>
+                {
+                    loading 
+                    ? <div className="text-center"><h2>Cargando...</h2></div> 
+                    : <ItemList products={ products.filter(product => product.stock > 0) } />
+                }
+            </section>
+        </>
     )
 }
 
