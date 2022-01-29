@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { getOrder } from "../../services/OrderService"
 import { formatDate } from '../../services/Util'
 import ItemsTable from "../cart/ItemsTable"
-import OrderNotFound from "./OrderNotFound"
+import OrderNotFound from "./status/OrderNotFound"
 import Search from "./Search"
 
 const OrderContaner = () => {

@@ -1,7 +1,7 @@
 import { useCartContext } from './CartContext'
 
 import ItemsTable from './ItemsTable'
-import EmptyCart from './EmptyCart'
+import EmptyCart from './status/EmptyCart'
 import FormCheckout from './FormCheckout'
 
 const Cart = () => {

@@ -31,7 +31,7 @@ const storeOrder = async (buyer, items) => {
         decreaseStock(element.id, element.quantity)
     })
 
-    return response.id
+    return response.id.trim()
 }
 
 const getOrder = async (id) => {
