@@ -1,6 +1,6 @@
 import { db } from '../firebase'
 import { addDoc, collection, doc, getDoc, serverTimestamp } from 'firebase/firestore'
-import { decreaseStock } from './ProductService'
+//import { decreaseStock } from './ProductService'
 
 const storeOrder = async (buyer, items) => {
     
@@ -27,9 +27,12 @@ const storeOrder = async (buyer, items) => {
         items: itemsValidated
     })
 
+    // decrease stock in firebase
+    /*
     itemsValidated.forEach(element => {
         decreaseStock(element.id, element.quantity)
     })
+    */
 
     return response.id.trim()
 }
