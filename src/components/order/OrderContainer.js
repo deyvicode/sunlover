@@ -24,14 +24,12 @@ const OrderContaner = () => {
         try {
             const order = await getOrder(id)
             
-            //setSearch('')
             setOrder(order)
             setNotFound(false)
             if (target) {
                 target.reset()
             }
         } catch (error) {
-            console.log(error);
             setNotFound(true)
         }
     }

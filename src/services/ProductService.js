@@ -45,7 +45,8 @@ const decreaseStock = async (id, quantity) => {
     const refDoc = doc(productsCollection, id)
 
     const response = await updateDoc(refDoc, 'stock', increment(-quantity))
-    console.log(`decrease ${id} - ${quantity}`, response)
+    
+    return response
 }
 
 export { getProducts, getProduct, getProductsByCategory, decreaseStock }

@@ -27,11 +27,6 @@ const menuLinks = [
         name: 'Verificar Compra',
         url: '/order'
     }
-    /* ,
-    {
-        name: 'Soporte',
-        url: '/support'
-    } */
 ]
 
 const App = () => {

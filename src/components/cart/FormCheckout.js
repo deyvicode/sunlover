@@ -27,7 +27,6 @@ const FormCheckout = ({ items }) => {
         setSending(false)
         
         if (idOrder) {
-            console.log(idOrder);
             setBuyer({
                 name: '',
                 email: '',
