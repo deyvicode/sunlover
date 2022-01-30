@@ -1,7 +1,10 @@
 import './scss/main.scss' // base styles
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CartProvider from './components/cart/CartContext'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getCategories } from './services/ProductService'
+import { sortByName } from './services/Util'
 
 import Header from './components/header/Header'
 import ItemListContainer from './components/product/ItemListContainer'
@@ -10,30 +13,38 @@ import Footer from './components/footer/Footer'
 import Cart from './components/cart/Cart'
 import OrderContaner from './components/order/OrderContainer'
 
-const menuLinks = [
-    {
-        name: 'Hombre',
-        url: '/category/male'
-    },
-    {
-        name: 'Mujer',
-        url: '/category/female'
-    },
-    {
-        name: 'Niños',
-        url: '/category/kids'
-    },
-    {
-        name: 'Verificar Compra',
-        url: '/order'
-    }
-]
-
 const App = () => {
+
+    const [menuLinks, setMenuLinks] = useState()
+
+    useEffect(() => {
+        getCategories().then(categories => {
+            const links = categories.map(category => {
+                return {
+                    name: category.description,
+                    url: `/category/${category.key}`
+                }
+            })
+
+            links.push({
+                name: 'Verificar Compra',
+                url: '/order'
+            })
+
+            setMenuLinks( sortByName(links) )
+        })
+
+    }, [])
+
     return (
         <CartProvider>
             <BrowserRouter>
-                <Header menuLinks={menuLinks} />
+                {
+                    menuLinks 
+                    ? <Header menuLinks={menuLinks} />
+                    : ''
+                }
+                
                 <main className='l-main'>
                     <Routes>
                         <Route path='/' element={<ItemListContainer />} />
@@ -44,7 +55,12 @@ const App = () => {
                         <Route path='/order/:idOrder' element={<OrderContaner />} />
                     </Routes>
                 </main>
-                <Footer menuLinks={menuLinks} />
+
+                {
+                    menuLinks
+                    ? <Footer menuLinks={menuLinks} />
+                    : ''
+                }
             </BrowserRouter>
         </CartProvider>
     );

@@ -18,7 +18,7 @@ const Navbar = ({ menuLinks }) => {
                 <i className='bx bx-menu'></i>
             </div>
 
-            <NavLink to="/" className="nav__logo"><b>SunLover</b></NavLink>
+            <NavLink to="/" className="nav__logo"><h3>SunLover</h3></NavLink>
 
             <div className={classMenu}>
                 <ul className="nav__list">

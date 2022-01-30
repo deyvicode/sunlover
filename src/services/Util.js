@@ -4,4 +4,8 @@ const formatDate = (date) => new Intl.DateTimeFormat('es', {
     hour12: false
 }).format(date)
 
-export { formatDate }
+const sortByName = (array) => {
+    return array.sort((a, b) => a.name.localeCompare(b.name))
+}
+
+export { formatDate, sortByName }
