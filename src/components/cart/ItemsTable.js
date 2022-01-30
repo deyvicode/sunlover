@@ -1,6 +1,7 @@
 import { useCartContext } from './CartContext'
+import StockInfo from './status/StockInfo'
 
-const ItemsTable = ({ items, withRemoveItem }) => {
+const ItemsTable = ({ items, withRemoveItem, withStockInfo }) => {
 
     const { removeItem } = useCartContext()
 
@@ -19,18 +20,22 @@ const ItemsTable = ({ items, withRemoveItem }) => {
                 </thead>
                 <tbody>
                     {
-                        items.map(order => (
-                            <tr key={ order.id }>
+                        items.map(item => (
+                            <tr key={ item.id }>
                                 <td className="d-flex">
-                                    <img src={ order.image } alt={ order.name } />
-                                    { order.name }
+                                    <img src={ item.image } alt={ item.name } />
+                                    { item.name } 
+                                    {
+                                        !withStockInfo ? '' 
+                                        : <StockInfo success={ item.success } stock={ item.stock } />
+                                    }
                                 </td>
-                                <td>{ order.quantity }</td>
-                                <td> $ { (order.price * order.quantity ).toFixed(2) }</td>
+                                <td>{ item.quantity }</td>
+                                <td> $ { (item.price * item.quantity ).toFixed(2) }</td>
                                 {
                                     withRemoveItem && (
                                         <td>
-                                            <button className="btn-icon" onClick={ () => removeItem(order.id) }>
+                                            <button className="btn-icon" onClick={ () => removeItem(item.id) }>
                                                 <i className="bx bx-trash-alt"></i>
                                             </button>
                                         </td>
@@ -43,7 +48,7 @@ const ItemsTable = ({ items, withRemoveItem }) => {
                 <tfoot>
                     <tr>
                         <td colSpan="2">Total : </td>
-                        <td> $ { items.reduce((total, order) => total + order.price * order.quantity, 0).toFixed(2) }</td>
+                        <td> $ { items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2) }</td>
                     </tr>
                 </tfoot>
 

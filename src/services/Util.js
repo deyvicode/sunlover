@@ -8,4 +8,8 @@ const sortByName = (array) => {
     return array.sort((a, b) => a.name.localeCompare(b.name))
 }
 
-export { formatDate, sortByName }
+const findItem = (array, id) => {
+    return array.find(item => item.id === id)
+}
+
+export { formatDate, sortByName, findItem }

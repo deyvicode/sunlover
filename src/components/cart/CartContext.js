@@ -37,6 +37,8 @@ const CartProvider = ({ children }) => {
                 name: product.name,
                 image: product.image,
                 price: product.price,
+                stock: product.stock,
+                success: true,
                 quantity
             }
 
@@ -47,6 +49,10 @@ const CartProvider = ({ children }) => {
         setTotalQuantity(totalQuantity + quantity)
 
         localStorage.setItem('cart', JSON.stringify(newItems))
+    }
+
+    function addItems(items) {
+        setItems(items)
     }
 
     const removeItem = (idProduct) => {
@@ -79,6 +85,7 @@ const CartProvider = ({ children }) => {
             totalQuantity,
             items,
             addItem,
+            addItems,
             removeItem,
             clearCart
         }}>

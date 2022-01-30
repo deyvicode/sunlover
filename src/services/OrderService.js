@@ -1,14 +1,23 @@
 import { db } from '../firebase'
 import { addDoc, collection, doc, getDoc, serverTimestamp } from 'firebase/firestore'
 //import { decreaseStock } from './ProductService'
+import { getProducts } from './ProductService'
 
 const storeOrder = async (buyer, items) => {
     
-    let total = 0
+    const products = await getProducts()
 
-    const itemsValidated = items.map(item => {
-        
+    let total = 0
+    const ItemsValidated = []
+
+    const newItems = items.map(item => {
         total += item.price * item.quantity
+
+        // validate stock
+        const product = products.find(product => product.id === item.id)
+        const success = product.stock < item.quantity ? false : true
+        item.stock = product.stock
+        ItemsValidated.push({...item, success})
 
         return {
             id: item.id,
@@ -19,6 +28,15 @@ const storeOrder = async (buyer, items) => {
         }
     })
 
+    const errors = ItemsValidated.filter(item => !item.success)
+    if (errors.length > 0) {
+        return {
+            success: false,
+            message: 'No hay stock suficiente para algunos productos',
+            items: ItemsValidated
+        }
+    }
+
     const ordersCollection = collection(db, 'orders')
     const response = await addDoc(ordersCollection, {
         date: serverTimestamp(),
@@ -28,7 +46,7 @@ const storeOrder = async (buyer, items) => {
             name: buyer.name,
             phone: buyer.phone
         },
-        items: itemsValidated
+        items: newItems
     })
 
     // decrease stock in firebase
@@ -38,7 +56,10 @@ const storeOrder = async (buyer, items) => {
     })
     */
 
-    return response.id.trim()
+    return {
+        success: true,
+        id: response.id.trim()
+    }
 }
 
 const getOrder = async (id) => {

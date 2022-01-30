@@ -13,7 +13,7 @@ const Cart = () => {
         <div className="section bd-grid">
             <h2>Va a comprar: </h2><br/>
             <div className="cart-payment">
-                <ItemsTable items={ items } withRemoveItem={true} />
+                <ItemsTable items={ items } withRemoveItem={true} withStockInfo={true} />
                 <div className='cart__buyer-form'>
                     <FormCheckout items={ items }  /> 
                 </div>

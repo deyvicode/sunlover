@@ -54,7 +54,7 @@ const OrderContaner = () => {
                     order ? (
                         <>
                             <div className="cart-payment mt-2">
-                                <ItemsTable items={ order.items } withRemoveItem={false}  />
+                                <ItemsTable items={ order.items } withRemoveItem={false} withStockInfo={false}  />
 
                                 <div className="cart__buyer-form">
                                     <p><b>Fecha:</b> { formatDate(order.date.toDate()) }</p> 

@@ -63,7 +63,7 @@ const App = () => {
                     : ''
                 }
 
-                <ToastContainer theme="dark" position="bottom-right" hideProgressBar closeOnClick pauseOnHover />
+                <ToastContainer theme="dark" position="bottom-center" hideProgressBar closeOnClick pauseOnHover />
             </BrowserRouter>
         </CartProvider>
     );

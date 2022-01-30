@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 const FormCheckout = ({ items }) => {
 
     const navigate = useNavigate()
-    const { clearCart } = useCartContext()
+    const { clearCart, addItems } = useCartContext()
     const [sending, setSending] = useState(false)
     const [buyer, setBuyer] = useState({
         name: '',
@@ -31,10 +31,10 @@ const FormCheckout = ({ items }) => {
             
             return false
         } else {
-            const idOrder = await storeOrder(buyer, items)
+            const response = await storeOrder(buyer, items)
             setSending(false)
             
-            if (idOrder) {
+            if (response.success) {
                 setBuyer({
                     name: '',
                     email: '',
@@ -45,7 +45,10 @@ const FormCheckout = ({ items }) => {
                 toast.info('Guarde su codigo de compra o la imagen QR')
     
                 clearCart()
-                navigate('/order/'+idOrder)
+                navigate('/order/'+response.id)
+            } else {
+                toast.error(response.message)
+                addItems(response.items)
             }
         }
     }
