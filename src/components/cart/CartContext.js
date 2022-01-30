@@ -26,10 +26,9 @@ const CartProvider = ({ children }) => {
 
     const addItem = (product, quantity) => {
         const newItems = [...items]
-        const exist = isInCart(newItems, product.id)
+        const item = findItem(newItems, product.id, product.frameColor)
         
-        if (exist) {
-            const item = findItem(newItems, product.id)
+        if (item) {
             item.quantity += quantity
         } else {
             const newProduct = {
@@ -38,10 +37,11 @@ const CartProvider = ({ children }) => {
                 image: product.image,
                 price: product.price,
                 stock: product.stock,
+                frameColor: product.frameColor,
                 success: true,
                 quantity
             }
-
+            
             newItems.push(newProduct)
         }
         
@@ -73,11 +73,8 @@ const CartProvider = ({ children }) => {
         localStorage.removeItem('cart')
     }
 
-    const findItem = (array, id) => array.find(item => item.id === id)
-
-    const isInCart = (array, idProduct) => {
-        const item = findItem(array, idProduct)
-        return item ? true : false
+    const findItem = (array, id, frameColor) => {
+        return array.find(item => item.id === id && item.frameColor === frameColor)
     }
 
     return (

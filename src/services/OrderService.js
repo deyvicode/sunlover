@@ -24,7 +24,8 @@ const storeOrder = async (buyer, items) => {
             name: item.name,
             image: item.image,
             price: item.price,
-            quantity: item.quantity
+            quantity: item.quantity,
+            frameColor: item.frameColor
         }
     })
 

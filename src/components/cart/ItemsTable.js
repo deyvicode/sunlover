@@ -24,7 +24,7 @@ const ItemsTable = ({ items, withRemoveItem, withStockInfo }) => {
                             <tr key={ item.id }>
                                 <td className="d-flex">
                                     <img src={ item.image } alt={ item.name } />
-                                    { item.name } 
+                                    { `${item.name} ${ item.frameColor ? ' - '+item.frameColor : '' }` } 
                                     {
                                         !withStockInfo ? '' 
                                         : <StockInfo success={ item.success } stock={ item.stock } />

@@ -51,22 +51,18 @@ const OrderContaner = () => {
             {
                 !notFound ?
 
-                    order ? (
-                        <>
-                            <div className="cart-payment mt-2">
-                                <ItemsTable items={ order.items } withRemoveItem={false} withStockInfo={false}  />
+                    order ? 
+                        <div className="cart-payment mt-2">
+                            <ItemsTable items={ order.items } withRemoveItem={false} withStockInfo={false}  />
 
-                                <div className="cart__buyer-form">
-                                    <p><b>Fecha:</b> { formatDate(order.date.toDate()) }</p> 
-                                    <p><b>Nombres:</b> { order.buyer.name }</p> 
-                                    <p><b>Celular:</b> { order.buyer.phone }</p> 
-                                    <p><b>Email:</b> { order.buyer.email }</p> 
-                                    <br />
-                                    <QRCode value={ `${process.env.REACT_APP_URL}/order/${order.id}` } />
-                                </div>
+                            <div className="cart__buyer-form">
+                                <p><b>Fecha:</b> { formatDate(order.date.toDate()) }</p> 
+                                <p><b>Nombres:</b> { order.buyer.name }</p> 
+                                <br />
+                                <QRCode value={ `${process.env.REACT_APP_URL}/order/${order.id}` } />
                             </div>
-                        </>
-                    ) : ''
+                        </div>
+                    : ''
 
                 : <OrderNotFound />
             }

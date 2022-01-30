@@ -77,3 +77,27 @@ button.btn-icon {
     font-size: 5rem;
     margin: 1.5rem;
 }
+
+.colors {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+
+    .collect-dots {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        .dot {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            
+            &.selected {
+                border: 3px solid $dark-color;
+            }
+        }
+    }
+}

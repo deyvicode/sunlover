@@ -46,4 +46,12 @@ $breakpoints: (
     large: 1024px,
     xlarge: 1200px,
     xxlarge: 1440px
-)
+);
+
+$colors: blue,yellow,purple,orange,pink,teal,gray,black,brown,white, gold;
+
+@each $color in $colors {
+    .bg-#{$color} {
+        background-color: rgba($color, .6);
+    }
+}
