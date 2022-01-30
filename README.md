@@ -28,6 +28,10 @@ Para este paso es necesario tener instalado [Git](https://git-scm.com/).
 ``` shell
 git clone https://github.com/deyvicode/sunlover.git
 ```
+Para ingresar a la carpeta de la aplicación usamos:
+``` shell
+cd sunlover
+```
 **2. Instalamos las dependencias**\
 En este punto necesitaremos tener instalado [Node](https://nodejs.org/en/) y luego instalaremos `Yarn` mediante `npm` (este se instala con `Node`).
 ``` shell
