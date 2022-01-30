@@ -23,7 +23,11 @@ const storeOrder = async (buyer, items) => {
     const response = await addDoc(ordersCollection, {
         date: serverTimestamp(),
         total,
-        buyer,
+        buyer: {
+            email: buyer.email,
+            name: buyer.name,
+            phone: buyer.phone
+        },
         items: itemsValidated
     })
 

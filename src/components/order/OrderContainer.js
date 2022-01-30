@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-
 import { getOrder } from "../../services/OrderService"
 import { formatDate } from '../../services/Util'
+import QRCode from 'react-qr-code';
+
 import ItemsTable from "../cart/ItemsTable"
 import OrderNotFound from "./status/OrderNotFound"
 import Search from "./Search"
@@ -40,7 +41,8 @@ const OrderContaner = () => {
             {
                 order ? (
                     <div className="text-center">
-                        <h1>¡Gracias por su compra!</h1>
+                        <h1 className="dark-color-light">¡Gracias por su compra!</h1>
+                        <div>Código de compra: <b>{ order.id }</b></div>
                     </div>
                 ) : <Search searchOrder={ searchOrder }></Search>
             }
@@ -53,13 +55,14 @@ const OrderContaner = () => {
                         <>
                             <div className="cart-payment mt-2">
                                 <ItemsTable items={ order.items } withRemoveItem={false}  />
+
                                 <div className="cart__buyer-form">
-                                    <h3> Datos de la compra: </h3> <br />
-                                    <p><b>codigo:</b> { order.id }</p>
                                     <p><b>Fecha:</b> { formatDate(order.date.toDate()) }</p> 
                                     <p><b>Nombres:</b> { order.buyer.name }</p> 
                                     <p><b>Celular:</b> { order.buyer.phone }</p> 
                                     <p><b>Email:</b> { order.buyer.email }</p> 
+                                    <br />
+                                    <QRCode value={ `${process.env.REACT_APP_URL}/order/${order.id}` } />
                                 </div>
                             </div>
                         </>

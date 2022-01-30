@@ -1,6 +1,7 @@
 import './scss/main.scss' // base styles
 
 import CartProvider from './components/cart/CartContext'
+import { ToastContainer } from 'react-toastify'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getCategories } from './services/ProductService'
@@ -61,6 +62,8 @@ const App = () => {
                     ? <Footer menuLinks={menuLinks} />
                     : ''
                 }
+
+                <ToastContainer theme="dark" position="bottom-right" hideProgressBar closeOnClick pauseOnHover />
             </BrowserRouter>
         </CartProvider>
     );

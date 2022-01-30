@@ -1,5 +1,4 @@
 import 'react-toastify/dist/ReactToastify.css'
-import { ToastContainer } from 'react-toastify'
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
@@ -26,7 +25,6 @@ const ItemDetailContainer = () => {
 
     return (
         <div>
-            
             {
                 loading
                 ? <div className="text-center mt-6"><h2>Cargando...</h2></div>
@@ -34,8 +32,6 @@ const ItemDetailContainer = () => {
                 ? <div className="text-center mt-6"><h2>Producto no encontrado</h2></div> 
                 : <ItemDetail product={ product } initial={ 1 } />
             }
-
-            <ToastContainer theme="dark" position="bottom-right" hideProgressBar closeOnClick pauseOnHover />
         </div>
     )
 }

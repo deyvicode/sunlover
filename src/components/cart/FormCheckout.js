@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { storeOrder } from '../../services/OrderService'
 import { useCartContext } from './CartContext'
-import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const FormCheckout = ({ items }) => {
 
@@ -11,6 +12,7 @@ const FormCheckout = ({ items }) => {
     const [buyer, setBuyer] = useState({
         name: '',
         email: '',
+        emailr: '',
         phone: ''
     })
 
@@ -23,18 +25,28 @@ const FormCheckout = ({ items }) => {
         event.preventDefault()
         setSending(true)
 
-        const idOrder = await storeOrder(buyer, items)
-        setSending(false)
-        
-        if (idOrder) {
-            setBuyer({
-                name: '',
-                email: '',
-                phone: ''
-            })
+        if (buyer.email !== buyer.emailr) {
+            toast.warning('Los correos no coinciden')
+            setSending(false)
+            
+            return false
+        } else {
+            const idOrder = await storeOrder(buyer, items)
+            setSending(false)
+            
+            if (idOrder) {
+                setBuyer({
+                    name: '',
+                    email: '',
+                    emailr: '',
+                    phone: ''
+                })
 
-            clearCart()
-            navigate('/order/'+idOrder)
+                toast.info('Guarde su codigo de compra o la imagen QR')
+    
+                clearCart()
+                navigate('/order/'+idOrder)
+            }
         }
     }
 
@@ -43,7 +55,8 @@ const FormCheckout = ({ items }) => {
             <h3>Datos del comprador: </h3>
             <input type="text" name="name" placeholder="Nombres" onChange={ handleInputChange } required />
             <input type="phone" name="phone" placeholder="celular" onChange={ handleInputChange } required />
-            <input type="email" name="email" placeholder="email" onChange={ handleInputChange } required />
+            <input type="email" name="email" placeholder="correo" onChange={ handleInputChange } required />
+            <input type="email" name="emailr" placeholder="repite el correo" onChange={ handleInputChange } required />
             <small>Sus datos correctos nos permitirán entregarle los productos de forma correcta y oportuna.</small>
             <button type="submit" className="button" disabled={ sending }>
                 { sending ? <i className="bx bx-loader-alt bx-spin"></i> : '' } Terminar Compra
