@@ -9,42 +9,68 @@ export const useCartContext = () => {
 
 const CartProvider = ({ children }) => {
     const [totalQuantity, setTotalQuantity] = useState(0)
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState(() => {
+        const localItems = localStorage.getItem("cart")
+        if (localItems) {
+            const newItems = JSON.parse(localItems)
+            
+            let newTotalQuantity = 0
+            newItems.forEach(element => newTotalQuantity += element.quantity)
+            setTotalQuantity(newTotalQuantity)
 
-    const addItem = (product, quantity) => {
-        const exist = isInCart(product.id)
-        
-        if (exist) {
-            const item = findItem(product.id)
-            item.quantity += quantity
-        } else {
-            const newItems = [...items]
-            newItems.push({...product, quantity})
-
-            setItems(newItems)
+            return newItems
         }
 
+        return []
+    })
+
+    const addItem = (product, quantity) => {
+        const newItems = [...items]
+        const exist = isInCart(newItems, product.id)
+        
+        if (exist) {
+            const item = findItem(newItems, product.id)
+            item.quantity += quantity
+        } else {
+            const newProduct = {
+                id: product.id,
+                name: product.name,
+                image: product.image,
+                price: product.price,
+                quantity
+            }
+
+            newItems.push(newProduct)
+        }
+        
+        setItems(newItems)
         setTotalQuantity(totalQuantity + quantity)
+
+        localStorage.setItem('cart', JSON.stringify(newItems))
     }
 
     const removeItem = (idProduct) => {
-        // reduce quantity
-        const item = findItem(idProduct)
+        const newItems = [...items]
+        
+        const item = findItem(newItems, idProduct)
         setTotalQuantity(totalQuantity - item.quantity)
-        // remove item from items
-        const newItems = items.filter(item => item.id !== idProduct)
-        setItems(newItems)
+        
+        const filtered = newItems.filter(item => item.id !== idProduct)
+        setItems(filtered)
+
+        localStorage.setItem('cart', JSON.stringify(filtered))
     }
 
     const clearCart = () => {
         setTotalQuantity(0)
         setItems([])
+        localStorage.removeItem('cart')
     }
 
-    const findItem = id => items.find(item => item.id === id)
+    const findItem = (array, id) => array.find(item => item.id === id)
 
-    const isInCart = (idProduct) => {
-        const item = findItem(idProduct)
+    const isInCart = (array, idProduct) => {
+        const item = findItem(array, idProduct)
         return item ? true : false
     }
 
