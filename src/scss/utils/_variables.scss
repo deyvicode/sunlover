@@ -51,7 +51,7 @@ $breakpoints: (
 $colors: blue,yellow,purple,orange,pink,teal,gray,black,brown,white, gold;
 
 @each $color in $colors {
-    .bg-#{$color} {
+    .bg-#{""+$color} {
         background-color: rgba($color, .6);
     }
 }

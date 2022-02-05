@@ -57,6 +57,130 @@ yarn start
 ```
 Ahora la aplicación deberia de estar en [http://localhost:3000](http://localhost:3000) en su navegador.
 
+## :books: Firebase y la base de datos
+Para replicar este proyecto necesitaras, adicional al código fuente, un backend como `firebase` donde hacer las peticiones y donde guardar los producto, categorias y ordenes, en nuestro caso  usamos `firestore`.
+
+La base de datos debe tener las siguientes colecciones:\
+**categories**
+```javascript
+{
+    key: "",            // string
+    description: ""     // string
+}
+```
+<details>
+<summary>ejemplo:</summary>
+
+```javascript
+{
+    key: "male",
+    description: "Hombre"
+}
+```
+</details>
+
+**products**
+```javascript
+{
+    category: "",       // string
+    description: "",    // string
+    discount: 0,        // number
+    frameColors: {      // (optional) map
+        default: "",    // string
+        variants: [     // array
+            "",
+            "",
+            ...
+        ]
+    },
+    gallery: [          // array
+        "",
+        "",
+        ...
+    ],
+    image: "",          // string
+    name: "",           // string
+    price: 0.00,        // number
+    stock: 0            // number
+}
+```
+<details>
+<summary>ejemplo:</summary>
+
+```javascript
+{
+    category: "male",
+    description: "Wise Ravenclaws™, show your house loyalty with these sunglasses featuring clip-on twilight blue lenses, temples in the shape of Luna Lovegood's wand, and the house name & symbol on the temple tips.",
+    discount: 30,
+    frameColors: {
+        default: "black",   // https://www.w3schools.com/colors/colors_names.asp
+        variants: [
+            "brown",
+            "gray"
+        ]
+    },
+    gallery: [
+        "https://cdn.shopify.com/s/files/1/0677/4111/products/Diff-Harry-Potter-RavenClaw-27_e910a1e5-e2ce-4689-8e98-436e67538ae8_540x.jpg",
+        "https://cdn.shopify.com/s/files/1/0677/4111/products/Diff-Harry-Potter-RavenClaw-28_864c2ffc-8150-426d-a9dc-d5eaeb0adf8e_540x.jpg",
+        "https://cdn.shopify.com/s/files/1/0677/4111/products/Diff-Harry-Potter-RavenClaw-26_44859a90-841d-4d8b-8afd-870a266c9909_105x105@2x.progressive.jpg"
+    ],
+    image: "/img/prod-01.png",
+    name: "Ravenclaw SMBTB",
+    price: 59.5,
+    stock: 7
+}
+```
+</details>
+
+**orders**
+```javascript
+{
+    buyer: {                    // map
+        email: "",              // string
+        name: "",               // string
+        phone: "",              // string
+    },
+    date: "",                   // timestamp
+    items: [                    // array
+        {
+            frameColor: "",     // string
+            id: "",             // string
+            image: "",          // string
+            name: "",           // string
+            price: 0.00,        // number
+            quantity: 0         // number
+        },
+        ...
+    ],
+    total: 0.00                 // number
+}
+```
+<details>
+<summary>ejemplo:</summary>
+
+```javascript
+{
+    buyer: {
+        email: "jhondoe@mail.com",
+        name: "Jhon Doe",
+        phone: "+51 987 654 321",
+    },
+    date: "Jan 30, 2022 at 1:08:53 PM UTC-5",
+    items: [
+        {
+            frameColor: "blue",
+            id: "RsnGsoo8NFUt9v8oMTWx",
+            image: "/img/prod-02.png",
+            name: "Billie Black Grey",
+            price: 80,
+            quantity: 1
+        }
+    ],
+    total: 80
+}
+```
+</details>
+
 ## :wave: Contacto
 * Linkedin: [deyvidelacruz](https://www.linkedin.com/in/deyvidelacruz/)
 * Github: [deyvicode](https://github.com/deyvicode)
