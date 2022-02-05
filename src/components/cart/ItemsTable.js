@@ -20,8 +20,8 @@ const ItemsTable = ({ items, withRemoveItem, withStockInfo }) => {
                 </thead>
                 <tbody>
                     {
-                        items.map(item => (
-                            <tr key={ item.id }>
+                        items.map((item, index) => (
+                            <tr key={ index }>
                                 <td className="d-flex">
                                     <img src={ item.image } alt={ item.name } />
                                     { `${item.name} ${ item.frameColor ? ' - '+item.frameColor : '' }` } 
@@ -35,7 +35,7 @@ const ItemsTable = ({ items, withRemoveItem, withStockInfo }) => {
                                 {
                                     withRemoveItem && (
                                         <td>
-                                            <button className="btn-icon" onClick={ () => removeItem(item.id) }>
+                                            <button className="btn-icon" onClick={ () => removeItem(item.id, item.frameColor) }>
                                                 <i className="bx bx-trash-alt"></i>
                                             </button>
                                         </td>

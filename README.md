@@ -1,7 +1,7 @@
 # SunLover - Ecoomerce
 SunLover es un proyecto ecommerce de una tienda ficticia de venta de gafas de sol modernos y de temporada. Este proyecto fue construido para el curso [ReactJS](https://www.coderhouse.com.pe/online/reactjs) de Coderhouse.
 
-![image cover](/public/cover.webp)
+![image cover](/public/cover.jpg)
 
 ## :nut_and_bolt: Tecnologias
 Para modificar este proyecto es necesario saber las tecnologias basicas de la web `html`, `css` y `javascript`. Adicional a esto, la aplicación fue construida usando las siguientes tecnologias:

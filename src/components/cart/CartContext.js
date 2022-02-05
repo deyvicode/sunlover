@@ -55,13 +55,13 @@ const CartProvider = ({ children }) => {
         setItems(items)
     }
 
-    const removeItem = (idProduct) => {
+    const removeItem = (idProduct, frameColor) => {
         const newItems = [...items]
         
-        const item = findItem(newItems, idProduct)
+        const item = findItem(newItems, idProduct, frameColor)
         setTotalQuantity(totalQuantity - item.quantity)
         
-        const filtered = newItems.filter(item => item.id !== idProduct)
+        const filtered = newItems.filter(item => item.id !== idProduct || item.frameColor !== frameColor)
         setItems(filtered)
 
         localStorage.setItem('cart', JSON.stringify(filtered))
