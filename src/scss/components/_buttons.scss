@@ -23,6 +23,23 @@ button {
     }
 }
 
+.button-fw {
+    display: inline-block;
+    background-color: $dark-color;
+    color: $white-color;
+    padding: 1.125rem 2rem;
+    font-weight: $font-medium;
+    border-radius: .5rem;
+    border: 2px solid $dark-color-light;
+    transition: .3s;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+        transform: translateY(-.25rem);
+    }
+}
+
 .button-icon {
     font-size: 1.25rem;
     margin-right: $mb-1;
@@ -100,4 +117,38 @@ button.btn-icon {
             }
         }
     }
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 0;
+}
+
+.button-login {
+    i {
+        font-size: 1.6rem;
+        margin-right: .5rem;
+    }
+
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid $dark-color;
+    border-radius: .5rem;
+    transition: .3s;
+    width: 100%;
+    
+    &:hover {
+        background-color: $dark-color;
+        color: $white-color;
+        transform: translateX(-.2rem);
+    }
+}
+
+w-100 {
+    width: 100%;
 }

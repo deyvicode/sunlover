@@ -1,0 +1,51 @@
+.cart-payment {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    
+    .table-container {
+        flex: 1;
+    }
+    
+    .cart__buyer-form {
+        background-color: $dark-color-lighten;
+        width: 100%;
+        border-radius: 5px;
+        padding: 1.5rem;
+    }
+    
+    @include breakpoint(768px) {
+        flex-direction: row;
+        .cart__buyer-form {
+            width: 300px;
+            margin-right: 1rem;
+        }
+    }
+}
+
+.card-user {
+    display: flex;
+    margin: 2.5rem 0;
+
+    img {
+        margin-top: 1.2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        margin-right: 1rem;
+    }
+
+    .email {
+        font-size: .938rem;
+        color: $dark-color-light;
+    }
+
+    button {
+        border: 1px solid $dark-color;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1rem;
+        padding: .3rem;
+    }
+}

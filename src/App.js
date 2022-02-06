@@ -1,6 +1,7 @@
 import './scss/main.scss' // base styles
 
 import CartProvider from './components/cart/CartContext'
+import AuthProvider from './context/AuthContext'
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -38,34 +39,36 @@ const App = () => {
     }, [])
 
     return (
-        <CartProvider>
-            <BrowserRouter>
-                {
-                    menuLinks 
-                    ? <Header menuLinks={menuLinks} />
-                    : ''
-                }
-                
-                <main className='l-main'>
-                    <Routes>
-                        <Route path='/' element={<ItemListContainer />} />
-                        <Route path='/category/:idCategory' element={<ItemListContainer />} />
-                        <Route path='/product/:idProduct' element={<ItemDetailContainer />} />
-                        <Route path='/cart' element={<Cart />} />
-                        <Route path='/order' element={<OrderContaner />} />
-                        <Route path='/order/:idOrder' element={<OrderContaner />} />
-                    </Routes>
-                </main>
+        <AuthProvider>
+            <CartProvider>
+                <BrowserRouter>
+                    {
+                        menuLinks 
+                        ? <Header menuLinks={menuLinks} />
+                        : ''
+                    }
+                    
+                    <main className='l-main'>
+                        <Routes>
+                            <Route path='/' element={<ItemListContainer />} />
+                            <Route path='/category/:idCategory' element={<ItemListContainer />} />
+                            <Route path='/product/:idProduct' element={<ItemDetailContainer />} />
+                            <Route path='/cart' element={<Cart />} />
+                            <Route path='/order' element={<OrderContaner />} />
+                            <Route path='/order/:idOrder' element={<OrderContaner />} />
+                        </Routes>
+                    </main>
 
-                {
-                    menuLinks
-                    ? <Footer menuLinks={menuLinks} />
-                    : ''
-                }
+                    {
+                        menuLinks
+                        ? <Footer menuLinks={menuLinks} />
+                        : ''
+                    }
 
-                <ToastContainer theme="dark" position="bottom-center" hideProgressBar closeOnClick pauseOnHover />
-            </BrowserRouter>
-        </CartProvider>
+                    <ToastContainer theme="dark" position="bottom-center" hideProgressBar closeOnClick pauseOnHover />
+                </BrowserRouter>
+            </CartProvider>
+        </AuthProvider>
     );
 }
 
