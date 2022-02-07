@@ -1,7 +1,7 @@
 # SunLover - Ecoomerce
 SunLover es un proyecto ecommerce de una tienda ficticia de venta de gafas de sol modernos y de temporada. Este proyecto fue construido para el curso [ReactJS](https://www.coderhouse.com.pe/online/reactjs) de Coderhouse.
 
-[![image cover](/public/cover.jpg)](https://youtu.be/vMQfXJYC8Tg)
+[![image cover](/public/cover.jpg)](https://youtu.be/7zeXFSGkQo8)
 
 ## :nut_and_bolt: Tecnologias
 Para modificar este proyecto es necesario saber las tecnologias basicas de la web `html`, `css` y `javascript`. Adicional a esto, la aplicación fue construida usando las siguientes tecnologias:
@@ -47,8 +47,8 @@ este último comando creará la carpeta `node_modules`, el cual contiene todas l
 
 **3. Ejecutar la aplicación**
 
-:warning: **IMPORTANTE** :warning: \
-La aplicación va a requerir de un archivo **.env** en el que se encuentren las variables de entorno, como por ejemplo las credenciales para **firebase**.
+> :warning: **IMPORTANTE** :warning: \
+> La aplicación va a requerir de un archivo **.env** en el que se encuentren las variables de entorno, como por ejemplo las credenciales para **firebase**.
 
 Por suerte, deje un archivo llamado `.env.example`; Entonces bastaria con renombrarlo o copiar su contenido y ponerlo en un archivo llamado `.env` que debe estar en la **carpeta raiz del proyecto**.
 
