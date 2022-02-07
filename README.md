@@ -1,7 +1,7 @@
 # SunLover - Ecoomerce
 SunLover es un proyecto ecommerce de una tienda ficticia de venta de gafas de sol modernos y de temporada. Este proyecto fue construido para el curso [ReactJS](https://www.coderhouse.com.pe/online/reactjs) de Coderhouse.
 
-[![image cover](/public/cover.jpg)](https://youtu.be/rXv1cZW35N0)
+[![image cover](/public/cover.jpg)](https://youtu.be/vMQfXJYC8Tg)
 
 ## :nut_and_bolt: Tecnologias
 Para modificar este proyecto es necesario saber las tecnologias basicas de la web `html`, `css` y `javascript`. Adicional a esto, la aplicación fue construida usando las siguientes tecnologias:
@@ -19,9 +19,11 @@ Es un pre-procesador para `css`. Es con el que esta escrito todo el estilo de es
 *La aplicacion es pequeña por lo que no se uso algún otro framework o complemento css por el peso de estos.*
 * [yarn](https://yarnpkg.com/) \
 Es un gestor de paquetes, como `npm`, lo usamos para instalar dependencias y correr la aplicación en entorno local o de desarrollo.
+* [Box Icons](https://boxicons.com/)\
+Es una coleccion de iconos usados en este proyecto.
 
 ## :rocket: Instalación
-Para instalar este proyecto en un entorno local (su computador) abra la `terminal` de comandos y siga los estos pasos:
+Para instalar este proyecto en un entorno local (su computador) abra la `terminal` de comandos y siga estos pasos:
 
 **1. Clonar el repositorio** \
 Para este paso es necesario tener instalado [Git](https://git-scm.com/).
@@ -57,10 +59,15 @@ yarn start
 ```
 Ahora la aplicación deberia de estar en [http://localhost:3000](http://localhost:3000) en su navegador.
 
-## :books: Firebase y la base de datos
-Para replicar este proyecto necesitaras, adicional al código fuente, un backend como `firebase` donde hacer las peticiones y donde guardar los producto, categorias y ordenes, en nuestro caso  usamos `firestore`.
+## :books: Firebase
+Para replicar este proyecto necesitaras, adicional al código fuente, un backend como `firebase` donde hacer las peticiones.
 
-La base de datos debe tener las siguientes colecciones:\
+> :warning: IMPORTANTE :warning:\
+> Recuerda remplazar tus credenciales de firebase en el archivo `.env`.
+
+### firestore
+Es una base de datos `NoSql` donde guardamos los productos, categorias y ordenes. Debe tener las siguientes colecciones:
+
 **categories**
 ```javascript
 {
@@ -181,8 +188,10 @@ La base de datos debe tener las siguientes colecciones:\
 ```
 </details>
 
-> :warning: IMPORTANTE :warning:\
-> Recuerda remplazar en el archivo `.env` con tus credenciales de firebase.
+### authentication
+Para que los compradores puedan identificarse con sus redes sociales(`google` y `facebook`), en lugar de llenar el formulario con sus datos, debes habilitar el modulo `authentication` y agregar los proveedores(providers) respectivos.
+
+> La implementacion de facebook es mas complejo, por lo que te recomiendo buscar documentación al respecto si deseas implementarlo.
 
 ## :wave: Contacto
 * Linkedin: [deyvidelacruz](https://www.linkedin.com/in/deyvidelacruz/)
